@@ -14,7 +14,9 @@ function App() {
 
   const fetchNotes = async () => {
     try {
-      const response = await fetch("http://localhost:3000/notes");
+      const response = await fetch(
+        "https://backend-test-ws0e.onrender.com/notes"
+      );
       const data = await response.json();
       setNotes(data);
     } catch (err) {
@@ -32,13 +34,16 @@ function App() {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/notes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ content }),
-      });
+      const response = await fetch(
+        "https://backend-test-ws0e.onrender.com/notes",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ content }),
+        }
+      );
 
       if (!response.ok) {
         const errData = await response.json();
